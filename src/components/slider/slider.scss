@@ -1,0 +1,72 @@
+.slider {
+    position: relative;
+    width: 600px;
+
+    &_track {
+        width: 100%;
+        height: 14px;
+        background: linear-gradient(to right, #2d213b, #382948);
+        border-radius: 7px;
+        position: relative;
+        margin-bottom: 50px;
+    }
+
+    &_thumb {
+        width: 50px;
+        height: 50px;
+        background: #2d213b;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        cursor: pointer;
+        transition: left 0.1s ease;
+    }
+
+    &_tooltip {
+        position: absolute;
+        top: -60px;
+        transform: translateX(-50%);
+        background: #382948;
+        padding: 10px 20px;
+        border-radius: 25px;
+        white-space: nowrap;
+        font-weight: bold;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px;
+            border-style: solid;
+            border-color: #382948 transparent transparent transparent;
+        }
+    }
+
+    &_ticks {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+
+        span {
+            position: relative;
+            font-size: 14px;
+            text-align: center;
+            width: 0;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: 50%;
+                transform: translateX(-50%);
+                height: 15px;
+                width: 4px;
+                background: #382948;
+                border-radius: 2px;
+            }
+        }
+    } 
+}

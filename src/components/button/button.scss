@@ -1,0 +1,43 @@
+.button {
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    
+
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    transition: all .1s ease-in-out;
+
+    &:hover {
+        transform: translateY(-1px);
+    }
+
+    &:active {
+        transform: translateY(0px);
+    }
+
+    &-primary {
+        padding: 15px;
+        padding-left: 60px;
+        padding-right: 60px;
+
+        background: linear-gradient(263deg, #534290 0%, #4D3572 100%);
+    }
+
+    &-secondary {
+        padding: 12px;
+        padding-left: 60px;
+        padding-right: 60px;
+
+        background: linear-gradient(255deg, #342A5A 0%, #402765 100%);
+    }
+
+    &-red {
+        padding: 12px;
+        padding-left: 60px;
+        padding-right: 60px;
+
+        background: #C3252A;
+    }
+}

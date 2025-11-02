@@ -1,0 +1,63 @@
+@use '../assets/scss/abstracts/' as *;
+
+.main-layout {
+    @include flex(flex-start, flex-start);
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    
+    &_sidebar {
+        position: fixed;
+        width: 395px;
+        height: 100%;
+
+        @include tablet {
+            position: absolute;
+            transform: translateX(-100%);
+            transition: all .4s ease-in-out;
+        }
+    }
+
+    &_container {
+        padding: 40px 35px;
+        margin-left: 410px;
+        width: calc(100% - 365px);
+
+        @include tablet {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    &_topbar {
+        @include flex(flex-end, flex-start);
+        width: 100%;
+        padding-left: 15px;
+        padding-right: 15px;
+
+        &_profile {
+            @include flex(center, flex-end);
+            width: 100%;
+            gap: 10px;
+
+            .image {
+                width: 60px;
+                height: 60px;
+                background: white;
+                border-radius: 50%;
+            }
+
+            .text {
+                text-align: right;
+            }
+
+            @media screen and (max-width: 920px) {
+                display: none;
+            }
+        }
+    }
+
+    &_content {
+        margin-top: 25px;
+    }
+}

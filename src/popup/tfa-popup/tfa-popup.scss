@@ -1,0 +1,19 @@
+@use '../../assets/scss/abstracts' as *;
+
+.qrcode {
+    position: absolute;
+    width: 300px;
+    border-radius: 50px;
+    margin-right: -40px;
+
+    &-container {
+        @include flex(center, flex-end)
+    }
+
+    @include mobile {
+        position: relative;
+        margin: auto;
+        left: 0;
+        margin-top: 30px;
+    }
+}

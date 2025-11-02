@@ -1,0 +1,37 @@
+@use '../../assets/scss/abstracts/' as *;
+
+.icon-text {
+    @include flex(center, flex-start);
+    gap: 17px;
+
+    &_icon {
+        @include flex(center, center);
+        width: 65px;
+        height: 65px;
+        min-height: 65px;
+        min-width: 65px;
+        border-radius: 20px;
+        font-weight: 800;
+        font-size: 35px;
+
+        &-red {
+            background: #BE3636;
+        }
+
+        &-green {
+            background: #25A153;
+        }
+    }
+
+    &_text {
+        h4 {
+            line-height: 30px;
+        }
+    }
+
+    @include mobile {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+}

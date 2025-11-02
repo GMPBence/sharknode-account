@@ -1,0 +1,110 @@
+@use '../../assets/scss/abstracts/' as *;
+
+.sidebar {
+    background: #0a0a0a5a 0% 0% no-repeat padding-box;
+    backdrop-filter: blur(30px);
+    width: 100%;
+    height: calc(100% - 30px);
+    border-radius: 45px;
+    padding: 60px 55px;
+
+    margin-top: 15px;
+    margin-left: 15px;
+    overflow: hidden;
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+
+    &_logo {
+        width: 287px;
+        height: 11%;
+        min-height: 85px;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &_links {
+        @include flex(flex-start, flex-start);
+        gap: 18px;
+        flex-direction: column;
+        padding-left: 10px;
+        height: 45%
+    }
+    
+    &_link {
+        @include flex(center, flex-start);
+        gap: 12px;
+        cursor: pointer;
+        background: #0000001d 0% 0% no-repeat padding-box;
+        padding: 10px 20px;
+        border-radius: 30px;
+        
+        h5 {
+            font-size: 23px;
+        }
+
+        img {
+            width: 35px;
+        }
+    }
+
+    &_bottom {
+        @include flex(flex-start, flex-end);
+        height: 44%;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    &_button {
+        @include flex(center, flex-start);
+        background: linear-gradient(256deg, #342A5A 0%, #402765 100%);
+        padding: 16px 30px;
+        width: 100%;
+        border-radius: 35px;
+        gap: 20px;
+
+        #amount {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        #currency {
+            font-size: 22px;
+            font-weight: 500;
+        }
+
+        &-big {
+            cursor: pointer;
+            padding: 26px;
+
+            * {
+                font-weight: 900;
+            }
+
+            h4 {
+                font-size: 21px;
+                line-height: 20px;
+            }
+        }
+    }
+
+    @media screen and (max-height: 700px) {
+        overflow-y: scroll;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        &_logo, &_links, &_bottom {
+            height: auto;
+        }
+
+        &_bottom {
+            margin-top: 35px;
+        }
+    }
+}

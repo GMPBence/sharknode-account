@@ -1,0 +1,88 @@
+@use './abstracts/' as *;
+@use 'sass:math';
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 math.div(20px, 2) * -1;
+
+    &-gap {
+        gap: 25px;
+    }
+
+    &-center {
+        align-items: center;
+        justify-content: center;
+    }
+
+    @include tablet {
+        margin: 0 math.div(24px, 2) * -1;
+    }
+}
+
+.align-items-center {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+[class*="col-"] {
+    padding: 0 math.div(20px, 2);
+
+    @include tablet {
+        padding: 0 math.div(24px, 2);
+    }
+}
+
+@for $i from 1 through 12 {
+    $v: math.div($i, 12) * 100;
+    .col-#{$i} {
+        width: $v*1%;
+    }
+}
+
+// medium screen
+
+@include tablet {
+    @for $i from 1 through 12 {
+        $v: math.div($i, 12) * 100;
+        .col-md-#{$i} {
+            width: $v*1%;
+        }
+    }
+
+    .hide-md {
+        display: none;
+    }
+}
+
+.container {
+    width: 500px;
+}
+
+// small screen
+
+@include mobile {
+    @for $i from 1 through 12 {
+        $v: math.div($i, 12) * 100;
+        .col-sm-#{$i} {
+            width: $v*1%;
+        }
+    }
+
+    .hide-sm {
+        display: none;
+    }
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+}
