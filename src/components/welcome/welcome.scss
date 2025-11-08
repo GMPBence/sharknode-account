@@ -1,0 +1,44 @@
+@use "../../assets/scss/abstracts/" as *;
+
+.welcome {
+    &_title {
+        text-align: center;
+
+        h1 {
+            font-size: 70px;
+            font-weight: 800;
+        }
+        
+        h3 {
+            font-size: 40px;
+            font-weight: 600;
+            margin-top: -10px;
+        }
+
+        @include mobile {
+            h1 {
+                font-size: 55px;
+            }
+
+            h3 {
+                font-size: 35px;
+            }
+        }
+    }
+
+    &_actions {
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        background: #0a0a0a5a 0% 0% no-repeat padding-box;
+        backdrop-filter: blur(30px);
+        border: 5px solid #13131329;
+        border-radius: 40px;
+
+        margin-top: 20px;
+        padding: 30px 40px;
+    }
+}

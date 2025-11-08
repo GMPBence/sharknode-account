@@ -1,4 +1,4 @@
-import ExpiringService from "../components/expiring-service/ExpiringService"
+import ExpiringService from "../components/expiring-server/ExpiringServer"
 
 import name from '../assets/img/name.png'
 import reload from '../assets/img/reload.png'

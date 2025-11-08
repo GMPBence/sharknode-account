@@ -11,6 +11,7 @@ import YourServicesPage from "./pages/YourServicesPage"
 import ServicesPage from "./pages/ServicesPage"
 import SettingsPage from "./pages/SettingsPage"
 import ManagePage from "./pages/ManagePage"
+import MainPage from "./pages/MainPage"
 
 const App = () => {
     if(false)
@@ -30,6 +31,7 @@ const App = () => {
     return (
         <Routes>
             <Route path="/" element={ <MainLayout /> }>
+                <Route path="/" element={ <MainPage /> } />
                 <Route path="/yourservices" element={ <YourServicesPage /> } />
                 <Route path="/services" element={ <ServicesPage /> } />
                 <Route path="/settings" element={ <SettingsPage /> } />

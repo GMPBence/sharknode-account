@@ -1,0 +1,66 @@
+@use '../../assets/scss/abstracts/' as *;
+
+.server-box {
+    padding: 25px;
+    background: #0a0a0a5a 0% 0% no-repeat padding-box;
+    backdrop-filter: blur(30px);
+    border: 5px solid #13131329;
+    border-radius: 40px;
+    flex-grow: 1;
+
+    width: 456px;
+
+    &_row {
+        @include flex(center, flex-start);
+        margin-top: 15px;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    &_info {
+        font-size: 18px;
+        margin-top: 15px;
+        font-weight: 300;
+    }
+
+    &_resource {
+        @include flex(center, flex-start);
+        gap: 8px;
+
+        h6 {
+            font-size: 18px;
+            font-weight: 300;
+            color: white;
+        }
+    }
+
+    &_button {
+        margin-top: 20px;
+    }
+
+    @include mobile {
+        width: 100%;
+        text-align: center;
+        
+        &_row {
+            @include flex(center, center);
+        }
+
+        &_button {
+            @include flex(center, center);
+        }
+    }
+
+    @media screen and (max-width: 1380px) {
+        width: 100%;
+        text-align: center;
+
+        &_row {
+            @include flex(center, center);
+        }
+
+        &_button {
+            @include flex(center, center);
+        }
+    }
+}

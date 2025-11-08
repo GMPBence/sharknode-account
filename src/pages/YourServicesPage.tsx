@@ -1,13 +1,12 @@
-import React from 'react'
-import ExpiringService from '../components/expiring-service/ExpiringService'
-import ServiceBox from '../components/service-box/ServiceBox'
+import ExpiringServer from '../components/expiring-server/ExpiringServer'
+import ServerBox from '../components/server-box/ServerBox'
 
 const YourServicesPage = () => {
     return (
         <div className='col-12'>
             <div className="row">
                 <div className="col-12 mb">
-                    <ExpiringService 
+                    <ExpiringServer 
                         name='MistyMC Lobby'
                         date='01:56 mulva lejar'
                         price='500'
@@ -17,9 +16,9 @@ const YourServicesPage = () => {
             </div>
             <div className="col-12">
                 <div className="row row-gap">
-                    <ServiceBox />
-                    <ServiceBox />
-                    <ServiceBox />
+                    <ServerBox />
+                    <ServerBox />
+                    <ServerBox />
                 </div>
             </div>
         </div>

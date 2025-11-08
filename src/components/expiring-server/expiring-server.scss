@@ -1,6 +1,6 @@
 @use '../../assets/scss/abstracts/' as *;
 
-.expiring-service {
+.expiring-server {
     @include flex(flex-start, flex-start);
     padding: 25px;
     background: #0a0a0a5a 0% 0% no-repeat padding-box;

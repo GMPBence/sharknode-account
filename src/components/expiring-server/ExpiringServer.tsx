@@ -1,8 +1,8 @@
 import Button from '../button/Button'
 import IconText from '../icon-text/IconText'
-import './expiring-service.scss'
+import './expiring-server.scss'
 
-type ExpiringServiceProps = {
+type ExpiringServerProps = {
 
     name: string
     date: string
@@ -11,10 +11,10 @@ type ExpiringServiceProps = {
 
 }
 
-const ExpiringService = (props: ExpiringServiceProps) => {
+const ExpiringServer = (props: ExpiringServerProps) => {
     return (
-        <div className='expiring-service'>
-            <div className="expiring-service_left">
+        <div className='expiring-server'>
+            <div className="expiring-server_left">
                 <IconText 
                     icon={ <p>!</p> }
                     title={ props.name }
@@ -22,7 +22,7 @@ const ExpiringService = (props: ExpiringServiceProps) => {
                     color='red'
                 />
             </div>
-            <div className="expiring-service_right">
+            <div className="expiring-server_right">
                 <h5>{ props.date }</h5>
                 <h5>{ props.price } SC</h5>
                 {
@@ -35,4 +35,4 @@ const ExpiringService = (props: ExpiringServiceProps) => {
     )
 }
 
-export default ExpiringService
+export default ExpiringServer
