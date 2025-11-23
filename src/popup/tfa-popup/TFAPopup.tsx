@@ -1,12 +1,37 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import './tfa-popup.scss'
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
 
-import qrcode from '../../assets/img/qrcode.png'
+import { TFAEnableFlow, TotpGenerator, useAuth } from 'magicauth-client'
 
 const TFAPopup = () => {
+    const magic = useAuth()
     const [ state, setState ] = useState(0)
+    const [ code, setCode ] = useState('')
+
+    const barcode = useCallback((node: HTMLCanvasElement) => {
+        const flow = magic.flows().getFlow(TFAEnableFlow)
+        
+        if(node && flow.barcode)
+            TotpGenerator.getQRCode(node, flow.barcode)
+    }, [ magic ])
+
+    const onDone = () => {
+        if(state !== 1) {
+            return
+        }
+        const flow = magic.flows().getFlow(TFAEnableFlow)
+        
+        flow.code({
+            code
+        })
+    }
+
+    const completeScan = () => setState(state + 1)
+    const backToScan = () => setState(0)
+
+    const back = () => magic.flows().endFlow()
 
     if(state === 0)
     return (
@@ -19,10 +44,12 @@ const TFAPopup = () => {
                     <Button 
                         type='primary'
                         text='Tovabb'
+                        onClick={ completeScan }
                     />
+                    <span className='tfa_link' onClick={ back }>vissza</span>
                 </div>
                 <div className="col-6 col-sm-12 qrcode-container">
-                    <img className='qrcode' src={ qrcode } alt="qrcode" />
+                    <canvas className='qrcode' ref={ barcode }></canvas>
                 </div>
             </div>
         </div>
@@ -41,6 +68,7 @@ const TFAPopup = () => {
                     <Input 
                         type='text'
                         placeholder='6 jegyu kod'
+                        onChange={ setCode }
                     />
                 </div>
             </div>
@@ -48,7 +76,9 @@ const TFAPopup = () => {
                 <Button 
                     type='primary'
                     text='Aktivalas'
+                    onClick={ onDone }
                 />
+                <p onClick={ backToScan }>vissza</p>
             </div>
         </div>
     )

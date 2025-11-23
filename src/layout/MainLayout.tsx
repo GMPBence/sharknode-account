@@ -1,8 +1,11 @@
-import { Outlet } from 'react-router'
+import { Outlet, useLocation } from 'react-router'
 import './main-layout.scss'
 import Sidebar from '../components/sidebar/Sidebar'
+import PopupElement from '../popup/PopupElement'
 
 const MainLayout = () => {
+    const location = useLocation()
+    
     return (
         <div className='main-layout'>
             <div className="main-layout_sidebar">
@@ -19,10 +22,11 @@ const MainLayout = () => {
                         <div className="image"></div>
                     </div>
                 </div>
-                <div className="main-layout_content">
+                <div className="main-layout_content" key={ location.pathname }>
                     <Outlet />
                 </div>
             </div>
+            <PopupElement />
         </div>
     )
 }

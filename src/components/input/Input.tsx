@@ -4,12 +4,13 @@ type InputProps = {
 
     type: string
     placeholder?: string
+    onChange: (str: string) => void
 
 }
 
 const Input = (props: InputProps) => {
     return (
-        <input className='input' type={ props.type } placeholder={ props.placeholder } />
+        <input className='input' key={ props.placeholder } type={ props.type } placeholder={ props.placeholder } onChange={ (e) => props.onChange!(e.target.value) } />
     )
 }
 

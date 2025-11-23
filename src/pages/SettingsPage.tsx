@@ -4,8 +4,31 @@ import goofyahh from '../assets/img/goofyahh.png'
 import email from '../assets/img/settings/email.png'
 import lock from '../assets/img/settings/lock.png'
 import user from '../assets/img/settings/user.png'
+import { useAuth } from "magicauth-client"
 
 const SettingsPage = () => {
+    const magic = useAuth()
+
+    const mfaToggle = () => {
+        magic.services().getMFAService()
+            .disableMfa(window.closePopup)
+    }
+
+    const changePassword = () => {
+        magic.services().getPasswordService()
+            .changePassword(window.closePopup)
+    }
+
+    const changeUsername = () => {
+        magic.services().getNameService()
+            .changeUsername(window.closePopup)
+    }
+
+    const changeEmail = () => {
+        magic.services().getEmailService()
+            .changeEmail(window.closePopup)
+    }
+
     return (
         <div className='col-12'>
             <div className="row mb">
@@ -15,7 +38,8 @@ const SettingsPage = () => {
                         description="kovacs.bence0429@gmail.com"
                         image={ <img src={ email } alt="goofyahh" /> }
                         button={{
-                            text: 'Modositas'
+                            text: 'Modositas',
+                            onClick: changeEmail
                         }}
                     />
                 </div>
@@ -26,7 +50,8 @@ const SettingsPage = () => {
                         title='Jelszo'
                         image={ <img src={ lock } alt="goofyahh" /> }
                         button={{
-                            text: 'Modositas'
+                            text: 'Modositas',
+                            onClick: changePassword
                         }}
                     />
                 </div>
@@ -35,7 +60,8 @@ const SettingsPage = () => {
                         title='Nev'
                         image={ <img src={ user } alt="goofyahh" /> }
                         button={{
-                            text: 'Modositas'
+                            text: 'Modositas',
+                            onClick: changeUsername
                         }}
                     />
                 </div>
@@ -46,7 +72,8 @@ const SettingsPage = () => {
                         title='2FA'
                         image={ <img src={ lock } alt="goofyahh" /> }
                         button={{
-                            text: 'Engedelyezes'
+                            text: 'Engedelyezes',
+                            onClick: mfaToggle
                         }}
                     />
                 </div>

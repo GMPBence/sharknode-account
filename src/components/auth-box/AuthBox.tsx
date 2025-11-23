@@ -2,16 +2,17 @@ import './auth-box.scss'
 import Input from '../input/Input'
 import Button from '../button/Button'
 import { Link } from 'react-router'
-import { motion } from 'framer-motion'
 
 type AuthBoxProps = {
     
     title: string
     inputs: {
         type: string
-        placeholder: string
+        placeholder: string,
+        onChange?: (str: string) => void
     }[]
     button: string
+    onDone?: () => void
     links: {
         name: string
         url: string
@@ -21,24 +22,26 @@ type AuthBoxProps = {
 
 const AuthBox = (props: AuthBoxProps) => {
     return (
-        <motion.div
-            className='auth-box'
-            initial={{  y: -40 }}
-            animate={{ y: 0, scale: 1 }}
-            transition={{
-                type: "spring",
-                stiffness: 200,
-                damping: 25
-            }}
-        >
+        <div className='auth-box'>
             <h1>{ props.title }</h1>
             {
                 props.inputs.map(input => (
-                    <Input type={ input.type } placeholder={ input.placeholder } />
+                    <Input 
+                        type={ input.type } 
+                        placeholder={ input.placeholder } 
+                        onChange={ (str) => {
+                            if(input.onChange) {
+                                input.onChange(str)
+                            }
+                        }} />
                 ))
             }
             <div className='align-items-center'>
-                <Button type='primary' text={ props.button } />
+                <Button 
+                    type='primary' 
+                    text={ props.button } 
+                    onClick={ props.onDone } 
+                />
             </div>
             <div className="auth-box_links">
                 {
@@ -47,7 +50,7 @@ const AuthBox = (props: AuthBoxProps) => {
                     ))
                 }
             </div>
-        </motion.div>
+        </div>
     )
 }
 

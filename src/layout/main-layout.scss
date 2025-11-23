@@ -10,10 +10,11 @@
         position: fixed;
         width: 395px;
         height: 100%;
+        animation: slideIn .4s;
 
         @include tablet {
             position: absolute;
-            transform: translateX(-100%);
+            transform: translateX(-395px);
             transition: all .4s ease-in-out;
         }
     }
@@ -60,5 +61,34 @@
     &_content {
         margin-top: 25px;
         height: calc(100vh - 220px);
+        animation: slideUp .4s;
     }
+}
+
+@keyframes slideIn {
+    
+    0% {
+        transform: translateX(-30px) scale(1.008);
+        opacity: .5;
+    }
+
+    100% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+
+}
+
+@keyframes slideUp {
+    
+    0% {
+        transform: translateY(20px) scale(1.005);
+        opacity: .5;
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+
 }
