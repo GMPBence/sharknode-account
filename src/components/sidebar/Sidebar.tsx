@@ -9,8 +9,11 @@ import cog from '../../assets/img/cog.png'
 import dbag from '../../assets/img/dbag.png'
 import plus from '../../assets/img/plus.png'
 import { Link } from 'react-router'
+import { useAuth } from 'magicauth-client'
 
 const Sidebar = () => {
+    const magic = useAuth()
+
     return (
         <div className='sidebar'>
             <div className="sidebar_logo">
@@ -48,7 +51,7 @@ const Sidebar = () => {
             <div className="sidebar_bottom">
                 <div id='amount' className="sidebar_button">
                     <img src={ dbag } alt="" />
-                    <span><span id='amount'>14 </span><span id='currency'>SharkCoin</span></span>
+                    <span><span id='amount'>{ magic.user.coins } </span><span id='currency'>SharkCoin</span></span>
                 </div>
                 <div id='buy' className="sidebar_button sidebar_button-big">
                     <img src={ plus } alt="" />

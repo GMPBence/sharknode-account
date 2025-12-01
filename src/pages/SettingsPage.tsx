@@ -8,10 +8,18 @@ import { useAuth } from "magicauth-client"
 
 const SettingsPage = () => {
     const magic = useAuth()
+    const mfaText = magic.user.mfa ? 'Kikapcsolás' : 'Bekapcsolás'
 
     const mfaToggle = () => {
+        if(magic.user.mfa) {
+            magic.services().getMFAService()
+                .disableMfa(window.closePopup)
+
+            return
+        }
+
         magic.services().getMFAService()
-            .disableMfa(window.closePopup)
+            .enableMfa(window.closePopup)
     }
 
     const changePassword = () => {
@@ -35,7 +43,7 @@ const SettingsPage = () => {
                 <div className="col-12 mb">
                     <SettingsBox 
                         title='Email'
-                        description="kovacs.bence0429@gmail.com"
+                        description={ magic.user.email }
                         image={ <img src={ email } alt="goofyahh" /> }
                         button={{
                             text: 'Modositas',
@@ -72,7 +80,7 @@ const SettingsPage = () => {
                         title='2FA'
                         image={ <img src={ lock } alt="goofyahh" /> }
                         button={{
-                            text: 'Engedelyezes',
+                            text: mfaText,
                             onClick: mfaToggle
                         }}
                     />

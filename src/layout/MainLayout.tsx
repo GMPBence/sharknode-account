@@ -38,7 +38,7 @@ const MainLayout = () => {
                     <div className="main-layout_topbar_profile">
                         <div className="text">
                             <h6>PROFIL</h6>
-                            <h5>kbence0429</h5>
+                            <h5>{ magic.user.username }</h5>
                         </div>
                         <div className="image"></div>
                         <img src={ logout } alt="logout" className='logout' onClick={ logoutClick } />

@@ -17,59 +17,65 @@ import TicketPopup from './popup/ticket-popup/TicketPopup.tsx'
 import CaptchaPopup from './popup/captcha-popup/CaptchaPopup.tsx'
 import EmailPopup from './popup/email-popup/EmailPopup.tsx'
 import ChangeEmailPopup from './popup/change-email-popup/ChangeEmailPopup.tsx'
+import { Provider } from 'react-redux'
+import store from './app/redux/Store.ts'
+import SharkServices from './app/services/SharkServices.ts'
 
 const hashHistory = createHashHistory()
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <MRouter history={ hashHistory }>
-            <AuthProvider
-                pages={ 
-                    PageSet.create() 
-                        .default((def) => {
-                            if(def.auth) {
-                                return
-                            }
-                            assign('/')
-                        })
-                        .page('ticket', (data) => {
-                            if(data.auth) {
-                                window.openPopup(<TicketPopup type={ data.type } />)
-                                return
-                            }
+        <Provider store={ store }>
+            <MRouter history={ hashHistory }>
+                <AuthProvider
+                    pages={ 
+                        PageSet.create() 
+                            .default((def) => {
+                                if(def.auth) {
+                                    return
+                                }
+                                assign('/')
+                            })
+                            .page('ticket', (data) => {
+                                if(data.auth) {
+                                    window.openPopup(<TicketPopup type={ data.type } />)
+                                    return
+                                }
 
-                            assign('/ticket?type=' + data.type)
-                        })
-                        .page('captcha', (data) => {
-                            if(data.auth) {
-                                window.openPopup(<CaptchaPopup />)
-                                return
-                            }
+                                assign('/ticket?type=' + data.type)
+                            })
+                            .page('captcha', (data) => {
+                                if(data.auth) {
+                                    window.openPopup(<CaptchaPopup />)
+                                    return
+                                }
 
-                            assign('/captcha')
-                        })
-                        .page('recover/password', () => assign('/recover/password'))
-                        .page('password', () => window.openPopup(<PasswordPopup />))
-                        .page('tfa/enable', () => window.openPopup(<TFAPopup />))
-                        .page('change/password', () => window.openPopup(<ChangePasswordPopup />))
-                        .page('change/username', () => window.openPopup(<ChangeNamePopup />))
-                        .page('verify/email', () => window.openPopup(<EmailPopup />))
-                        .page('change/email', () => window.openPopup(<ChangeEmailPopup />))
-                }
-                stateHandle={ 
-                    StateHandle.create()
-                        .addEvent('init', async () => {
-                            await AccountSelector.selectAuto()
-                            MagicAuth.handle().loading(false)
-                        })
-                }  
-            >
-                <App />
-                <ToastContainer containerId='center' position='bottom-center' limit={ 3 } />
-                <ToastContainer containerId='left' position='bottom-left' stacked limit={ 3 } />
-            </AuthProvider>
-        </MRouter>
-    </StrictMode>,
+                                assign('/captcha')
+                            })
+                            .page('recover/password', () => assign('/recover/password'))
+                            .page('password', () => window.openPopup(<PasswordPopup />))
+                            .page('tfa/enable', () => window.openPopup(<TFAPopup />))
+                            .page('change/password', () => window.openPopup(<ChangePasswordPopup />))
+                            .page('change/username', () => window.openPopup(<ChangeNamePopup />))
+                            .page('verify/email', () => window.openPopup(<EmailPopup />))
+                            .page('change/email', () => window.openPopup(<ChangeEmailPopup />))
+                    }
+                    stateHandle={ 
+                        StateHandle.create()
+                            .addEvent('init', async () => {
+                                await AccountSelector.selectAuto()
+                                MagicAuth.handle().loading(false)
+                            })
+                    }  
+                    userServices={ new SharkServices() }
+                >
+                    <App />
+                    <ToastContainer containerId='center' position='bottom-center' limit={ 3 } />
+                    <ToastContainer containerId='left' position='bottom-left' stacked limit={ 3 } />
+                </AuthProvider>
+            </MRouter>
+        </Provider>
+    </StrictMode>
 )
 
 const assign = (url: string) => {

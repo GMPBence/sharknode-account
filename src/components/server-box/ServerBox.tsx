@@ -1,46 +1,98 @@
 import IconText from '../icon-text/IconText'
 import './server-box.scss'
 import minecraft_logo from '../../assets/img/minecraft_logo.png'
+import python_logo from '../../assets/img/minecraft_logo.png'
+import nodejs_logo from '../../assets/img/minecraft_logo.png'
 
 import hdd from '../../assets/img/hdd.png'
 import cpu from '../../assets/img/cpu.png'
 import ram from '../../assets/img/ram.png'
 import Button from '../button/Button'
-import { Link } from 'react-router'
+import { Link, useNavigate } from 'react-router'
+import Util from '../../app/util/Util'
 
-const ServerBox = () => {
+type ServerBoxProps = {
+
+    name: string
+    expiresAt: Date
+    expired: boolean
+    price?: number
+
+    properties: {
+
+        type: string
+        typeName: string
+        planName: string
+        ram: string
+        cpu: string
+        hdd: string
+        
+    }
+
+}
+
+const ServerBox = (props: ServerBoxProps) => {
+    const navigate = useNavigate()
+    const expired = props.expired
+
+    const typeName = props.properties.typeName
+    const planName = props.properties.planName
+
+    const expiresDate = Util.formatDate(
+        props.expiresAt
+    )
+
+    const iconColor = expired ? 'red' : 'green'
+
+    const buttonText = expired 
+        ? 'Megujitas: ' + props.price + ' SC' 
+        : 'Kezeles'
+
+    const onClick = () => {
+        if(expired) {
+            // todo: start renew process
+            return
+        }
+
+        navigate('/manage')
+    }
+
     return (
         <div className='server-box'>
             <IconText 
                 icon={ <img src={ minecraft_logo } /> }
-                title='Anyad SMP'
-                description='MINECRAFT'
-                color='green'
+                title={ props.name }
+                description={ typeName.toUpperCase() }
+                color={ iconColor }
             />
             <div className="server-box_info">
-                <p>Tipus: Minecraft Default</p>
-                <p>Lejarat: 2025.12.02.</p>
+                <p>Csomag: { planName }</p>
+                {
+                    !expired ?
+                        <p>Lejarat: { expiresDate }</p>
+                    : null
+                }
             </div>
             <div className="server-box_row">
                 <div className="server-box_resource">
                     <img src={ cpu } alt="" />
-                    <h6>4 szal</h6>
+                    <h6>{ props.properties.cpu } szal</h6>
                 </div>
                 <div className="server-box_resource">
                     <img src={ hdd } alt="" />
-                    <h6>32 GB</h6>
+                    <h6>{ props.properties.hdd } GB</h6>
                 </div>
                 <div className="server-box_resource">
                     <img src={ ram } alt="" />
-                    <h6>8 GB</h6>
+                    <h6>{ props.properties.ram } GB</h6>
                 </div>
             </div>
             <div className="server-box_button">
-                <Link to='/manage'>
                 <Button 
-                    text='Kezeles'
+                    text={ buttonText }
                     type='secondary'
-                />  </Link>
+                    onClick={ onClick }
+                />
             </div>
         </div>
     )
