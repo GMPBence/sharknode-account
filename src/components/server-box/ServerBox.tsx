@@ -10,58 +10,45 @@ import ram from '../../assets/img/ram.png'
 import Button from '../button/Button'
 import { Link, useNavigate } from 'react-router'
 import Util from '../../app/util/Util'
+import SharkNode from '../../app/SharkNode'
+import { useAuth } from 'magicauth-client'
+import SharkServices from '../../app/services/SharkServices'
+import Entitlement from '../../app/entitlements/Entitlement'
 
 type ServerBoxProps = {
 
-    name: string
-    expiresAt: Date
-    expired: boolean
-    price?: number
-
-    properties: {
-
-        type: string
-        typeName: string
-        planName: string
-        ram: string
-        cpu: string
-        hdd: string
-        
-    }
+    entitlement: Entitlement
+    onClick: () => void
 
 }
 
 const ServerBox = (props: ServerBoxProps) => {
     const navigate = useNavigate()
-    const expired = props.expired
+    const entitlement = props.entitlement
 
-    const typeName = props.properties.typeName
-    const planName = props.properties.planName
+    const expired = entitlement.expired
+
+    const typeName = entitlement.properties.typeName
+    const planName = entitlement.properties.planName
 
     const expiresDate = Util.formatDate(
-        props.expiresAt
+        Util.getDate(entitlement.expiresAt)
     )
 
     const iconColor = expired ? 'red' : 'green'
 
     const buttonText = expired 
-        ? 'Megujitas: ' + props.price + ' SC' 
+        ? 'Megujitas: ' + entitlement.price + ' SC' 
         : 'Kezeles'
 
-    const onClick = () => {
-        if(expired) {
-            // todo: start renew process
-            return
-        }
-
-        navigate('/manage')
-    }
+    const iconSrc = SharkNode.getImages().get(entitlement.properties.type)
+    console.log(iconSrc)
 
     return (
         <div className='server-box'>
             <IconText 
-                icon={ <img src={ minecraft_logo } /> }
-                title={ props.name }
+                icon={ <img src={ iconSrc } /> }
+                title={ entitlement.name }
                 description={ typeName.toUpperCase() }
                 color={ iconColor }
             />
@@ -76,22 +63,22 @@ const ServerBox = (props: ServerBoxProps) => {
             <div className="server-box_row">
                 <div className="server-box_resource">
                     <img src={ cpu } alt="" />
-                    <h6>{ props.properties.cpu } szal</h6>
+                    <h6>{ entitlement.properties.cpu } szal</h6>
                 </div>
                 <div className="server-box_resource">
                     <img src={ hdd } alt="" />
-                    <h6>{ props.properties.hdd } GB</h6>
+                    <h6>{ entitlement.properties.disk } GB</h6>
                 </div>
                 <div className="server-box_resource">
                     <img src={ ram } alt="" />
-                    <h6>{ props.properties.ram } GB</h6>
+                    <h6>{ entitlement.properties.ram } GB</h6>
                 </div>
             </div>
             <div className="server-box_button">
                 <Button 
                     text={ buttonText }
                     type='secondary'
-                    onClick={ onClick }
+                    onClick={ props.onClick }
                 />
             </div>
         </div>

@@ -13,6 +13,12 @@
         border-radius: 20px;
         font-weight: 800;
         font-size: 35px;
+        transition: .3s all ease-in-out;
+
+        img {
+            width: 50px;
+            border-radius: 14px;
+        }
 
         &-red {
             background: #BE3636;

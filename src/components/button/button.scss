@@ -16,6 +16,12 @@
         transform: translateY(0px);
     }
 
+    &:disabled {
+        transform: none;
+        background: #3a3a3a;
+        cursor: default;
+    }
+
     &-primary {
         padding: 12px;
         padding-left: 60px;
@@ -38,5 +44,13 @@
         padding-right: 60px;
 
         background: #C3252A;
+    }
+
+    &-green {
+        padding: 12px;
+        padding-left: 60px;
+        padding-right: 60px;
+
+        background: #1cb93e;
     }
 }

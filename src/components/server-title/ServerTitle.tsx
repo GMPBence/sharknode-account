@@ -2,23 +2,23 @@ import { useEffect, useRef, useState } from 'react'
 import Util from '../../app/util/Util'
 import Button from '../button/Button'
 import IconText from '../icon-text/IconText'
-import './expiring-server.scss'
+import './server-title.scss'
+import SharkNode from '../../app/SharkNode'
 
-type ExpiringServerProps = {
+type ServerTitleProps = {
 
     name: string
+    type: string
+    typeName: string
     date: number
     price: number
-    autoRenew: boolean
-    onClick?: () => void
 
 }
 
-const ExpiringServer = (props: ExpiringServerProps) => {
-    const divRef = useRef<HTMLDivElement>(null)
+const ServerTitle = (props: ServerTitleProps) => {
     const initialized = useRef(false)
-
     const [ time, setTime ] = useState('')
+
     const [ intId, setIntId ] = useState<any>()
     const [ expiresAt, setExpiresAt ] = useState(0)
 
@@ -38,16 +38,8 @@ const ExpiringServer = (props: ExpiringServerProps) => {
         }
 
         setTime(getFormatted())
-        let counter = 0
         const interval = setInterval(() => {
             setTime(getFormatted())
-
-            if(getCurrent() <= 1) {
-                counter++;
-
-                if(counter > 7)
-                divRef.current.classList.add('expiring-server-out')
-            }
 
             if(getCurrent() <= 0) {
                 setTime('00:00')
@@ -55,7 +47,7 @@ const ExpiringServer = (props: ExpiringServerProps) => {
                 window.clearInterval(interval)
                 return
             }
-        }, 100);
+        }, 1000);
 
         setIntId(interval)
     }, [ props ])
@@ -74,36 +66,25 @@ const ExpiringServer = (props: ExpiringServerProps) => {
     const getCurrent = () => {
         return props.date - Util.timestamp()
     }
+    
+    const iconSrc = SharkNode.getImages().get(props.type)
 
-    if(time === '00:00') {
-        return
-    }
     return (
-        <div className='expiring-server' ref={ divRef }>
-            <div className="expiring-server_left">
+        <div className='server-title'>
+            <div className="server-title_left">
                 <IconText 
-                    icon={ <p>!</p> }
+                    icon={ <img src={ iconSrc }></img> }
                     title={ props.name }
-                    description='HAMAROSAN LEJAR'
-                    color='red'
+                    description={ props.typeName.toUpperCase() }
+                    color='green'
                 />
             </div>
-            <div className="expiring-server_right">
+            <div className="server-title_right">
                 <h5>{ time } mulva lejar</h5>
                 <h5>{ props.price } SC</h5>
-                {
-                    props.onClick ?
-                        <Button 
-                            text={ props.autoRenew ? 'Automatikus' : 'Megujitas' } 
-                            disabled={ props.autoRenew } 
-                            type='secondary' 
-                            onClick={ props.onClick } 
-                        />
-                    : null
-                }
             </div>
         </div>
     )
 }
 
-export default ExpiringServer
+export default ServerTitle

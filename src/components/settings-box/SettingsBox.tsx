@@ -6,6 +6,7 @@ type SettingsBoxProps = {
 
     button: {
         text: string
+        type?: string
         onClick?: () => void
     }
 
@@ -16,6 +17,8 @@ type SettingsBoxProps = {
 }
 
 const SettingsBox = (props: SettingsBoxProps) => {
+    const type = props.button.type ? props.button.type : 'secondary'
+
     return (
         <div className='settings-box'>
             <div className="settings-box_left">
@@ -28,7 +31,7 @@ const SettingsBox = (props: SettingsBoxProps) => {
                 <h5>{ props.description }</h5>
             </div>
             <div className="settings-box_right">
-                <Button text={ props.button.text } type='secondary' onClick={ props.button.onClick } />
+                <Button text={ props.button.text } type={ type } onClick={ props.button.onClick } />
             </div>
         </div>
     )

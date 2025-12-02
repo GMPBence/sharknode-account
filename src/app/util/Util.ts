@@ -16,6 +16,10 @@ class Util {
         return Math.floor(Date.now() / 1000)
     }
 
+    public static copy(obj: any) {
+        return JSON.parse(JSON.stringify(obj))
+    }
+
 }
 
 export default Util

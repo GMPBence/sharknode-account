@@ -1,7 +1,7 @@
-interface DefaultAction<T> {
+interface DefaultAction<T, M> {
 
-    type: string
-    payload: T
+    type: T
+    payload: M
 
 }
 

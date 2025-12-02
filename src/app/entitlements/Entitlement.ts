@@ -5,10 +5,11 @@ interface Entitlement {
     properties: {
 
         type: string
-        plan: string
+        typeName: string
+        planName: string
         ram: string
         cpu: string
-        hdd: string
+        disk: string
         
     }
 

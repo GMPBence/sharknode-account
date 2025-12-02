@@ -1,12 +1,11 @@
 @use '../../assets/scss/abstracts/' as *;
 
-.expiring-server {
+.server-title {
     @include flex(flex-start, flex-start);
     padding: 25px;
     background: #0a0a0a5a 0% 0% no-repeat padding-box;
     backdrop-filter: blur(30px);
     border: 5px solid #13131329;
-    animation: fadeIn .4s;
     
     border-radius: 40px;
     height: 128px;
@@ -21,10 +20,6 @@
         width: 60%;
         gap: 20px;
         height: 100%;
-    }
-
-    &-out {
-        animation: fadeOut .3s;
     }
 
     @media screen and (max-width: 1320px) and (min-width: 1200px) {
@@ -62,32 +57,4 @@
             gap: 10px;
         }
     }
-}
-
-@keyframes fadeIn {
-    
-    0% {
-        opacity: 0;
-        transform: translateY(-15px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-}
-
-@keyframes fadeOut {
-
-    0% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-15px);
-    }
-
 }

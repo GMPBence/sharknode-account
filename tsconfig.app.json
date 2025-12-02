@@ -19,7 +19,7 @@
     "strict": true,
     "strictPropertyInitialization": false,
     "strictNullChecks": false,
-    "erasableSyntaxOnly": true,
+    "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
