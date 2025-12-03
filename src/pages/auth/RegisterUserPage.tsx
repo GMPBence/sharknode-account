@@ -77,25 +77,25 @@ const RegisterUserPage = () => {
     return (
         <AuthPopIn key='step0'>
             <AuthBox 
-                title="REGISZTRACIO"
+                title="REGISZTRÁCIÓ"
                 inputs={[
                     {
                         type: 'text',
-                        placeholder: 'felhasznalonev',
+                        placeholder: 'felhasználónév',
                         onChange: setUsername
                     },
                     {
                         type: 'email',
-                        placeholder: 'email cim',
+                        placeholder: 'email cím',
                         onChange: setEmail
                     }
                 ]}
-                button="kovetkezo"
+                button="kovetkező"
                 onDone={ completeState }
                 links={[
                     {
                         url: '/',
-                        name: 'bejelentkezes'
+                        name: 'bejelentkezés'
                     }
                 ]}
             />
@@ -107,25 +107,25 @@ const RegisterUserPage = () => {
         <AuthSlideIn key='step1'>
             <AuthBox 
                 key='step2'
-                title="REGISZTRACIO"
+                title="REGISZTRÁCIÓ"
                 inputs={[
                     {
                         type: 'password',
-                        placeholder: 'jelszo',
+                        placeholder: 'jelszó',
                         onChange: setPassword
                     },
                     {
                         type: 'password',
-                        placeholder: 'jelszo ujra',
+                        placeholder: 'jelszó újra',
                         onChange: setPassword1
                     }
                 ]}
-                button="kovetkezo"
+                button="kovetkező"
                 onDone={ completeState }
                 links={[
                     {
                         url: '/',
-                        name: 'bejelentkezes'
+                        name: 'bejelentkezés'
                     }
                 ]}
             />
@@ -137,7 +137,7 @@ const RegisterUserPage = () => {
         <AuthSlideIn key='step2'>
             <AuthBox 
                 key='step2'
-                title="REGISZTRACIO"
+                title="REGISZTRÁCIÓ"
                 inputs={[
                     {
                         type: 'password',
@@ -148,12 +148,12 @@ const RegisterUserPage = () => {
                         placeholder: 'jelszo ujra'
                     }
                 ]}
-                button="regisztracio"
+                button="regisztráció"
                 onDone={ completeState }
                 links={[
                     {
                         url: '/',
-                        name: 'bejelentkezes'
+                        name: 'bejelentkezés'
                     }
                 ]}
             />

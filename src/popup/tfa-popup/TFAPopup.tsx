@@ -4,6 +4,7 @@ import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
 
 import { TFAEnableFlow, TotpGenerator, useAuth } from 'magicauth-client'
+import { TailSpin } from 'react-loader-spinner'
 
 const TFAPopup = () => {
     const magic = useAuth()
@@ -32,6 +33,24 @@ const TFAPopup = () => {
     const backToScan = () => setState(0)
 
     const back = () => magic.flows().endFlow()
+
+    if(magic.isLoading) {
+        return (
+            <div className='col-12'>
+                <div className="row">
+                    <div className="col-12">
+                        <h3>2FA AKTIVÁLÁS</h3>
+                    </div>
+                </div>
+                <div className="align-items-center">
+                    <TailSpin 
+                        width="45"
+                        color="white"
+                    />
+                </div>
+            </div>
+        )
+    }
 
     if(state === 0)
     return (

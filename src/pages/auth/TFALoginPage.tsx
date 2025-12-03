@@ -5,22 +5,22 @@ const TFALoginPage = () => {
     return (
         <AuthSlideIn key="step0">
             <AuthBox 
-                title="BEJELENTKEZES - 2FA"
+                title="BEJELENTKEZÉS - 2FA"
                 inputs={[
                     {
                         type: 'text',
-                        placeholder: '6 jegyu kod'
+                        placeholder: '2fa kód'
                     }
                 ]}
-                button="bejelentkezes"
+                button="bejelentkezés"
                 links={[
                     {
                         url: '/register',
-                        name: 'regisztracio'
+                        name: 'regisztráció'
                     },
                     {
                         url: '/recover',
-                        name: 'elfelejtett jelszo'
+                        name: 'elfelejtett jelszó'
                     }
                 ]}
             />

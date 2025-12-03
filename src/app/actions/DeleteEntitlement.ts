@@ -8,7 +8,7 @@ type ReduxAction = DefaultAction<'delete-entitlement', string>
 class DeleteEntitlement extends AbstractAction<string, ReduxAction> {
 
     public async execute(id: string): Promise<ReduxAction> {
-        /*return await new RequestFactory()
+        return await new RequestFactory()
             .url(PanelAPI.DELETE_ENTITLEMENT)
             .method(RequestMethod.POST)
             .body({
@@ -26,7 +26,7 @@ class DeleteEntitlement extends AbstractAction<string, ReduxAction> {
                         type: 'delete-entitlement',
                         payload: id
                     }
-                })*/
+                })
 
         return {
                         type: 'delete-entitlement',

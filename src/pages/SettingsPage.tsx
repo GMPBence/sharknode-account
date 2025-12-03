@@ -1,12 +1,15 @@
 import SettingsBox from "../components/settings-box/SettingsBox"
 
-import goofyahh from '../assets/img/goofyahh.png'
+import profile from '../assets/img/profile.png'
 import email from '../assets/img/settings/email.png'
 import lock from '../assets/img/settings/lock.png'
-import user from '../assets/img/settings/user.png'
+import name from '../assets/img/clipboard.png'
 import { useAuth } from "magicauth-client"
+import { useNavigate } from "react-router"
+import DeleteAccountPopup from "../popup/delete-account-popup/DeleteAccountPopup"
 
 const SettingsPage = () => {
+    const navigate = useNavigate()
     const magic = useAuth()
     const mfaText = magic.user.mfa ? 'Kikapcsolás' : 'Bekapcsolás'
 
@@ -35,6 +38,22 @@ const SettingsPage = () => {
     const changeEmail = () => {
         magic.services().getEmailService()
             .changeEmail(window.closePopup)
+    }
+
+    const deleteAccount = () => {
+        window.openPopup(
+            <DeleteAccountPopup 
+                onClick={ actuallyDelete }
+            />
+        )
+    }
+
+    const actuallyDelete = () => {
+        magic.services().getDataService()
+            .deleteUser(() => {
+                window.closePopup()
+                navigate('/')
+            })
     }
 
     return (
@@ -66,7 +85,7 @@ const SettingsPage = () => {
                  <div className="col-6 col-sm-12 mb">
                     <SettingsBox 
                         title='Név'
-                        image={ <img src={ user } alt="goofyahh" /> }
+                        image={ <img src={ name } alt="goofyahh" /> }
                         button={{
                             text: 'Módosítás',
                             onClick: changeUsername
@@ -88,9 +107,10 @@ const SettingsPage = () => {
                  <div className="col-6 col-sm-12">
                     <SettingsBox 
                         title='Fiok törlése'
-                        image={ <img src={ goofyahh } alt="goofyahh" /> }
+                        image={ <img src={ profile } alt="goofyahh" style={{ borderRadius: '50%', width: '60px' }} /> }
                         button={{
-                            text: 'Törlés'
+                            text: 'Törlés',
+                            onClick: deleteAccount
                         }}
                     />
                 </div>

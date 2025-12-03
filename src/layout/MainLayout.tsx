@@ -5,6 +5,7 @@ import PopupElement from '../popup/PopupElement'
 import { Obj, useAuth } from 'magicauth-client'
 
 import logout from '../assets/img/logout.png'
+import profile from '../assets/img/profile.png'
 
 const MainLayout = () => {
     const magic = useAuth()
@@ -40,7 +41,9 @@ const MainLayout = () => {
                             <h6>PROFIL</h6>
                             <h5>{ magic.user.username }</h5>
                         </div>
-                        <div className="image"></div>
+                        <div className="image">
+                            <img src={ profile } alt="pfp" />
+                        </div>
                         <img src={ logout } alt="logout" className='logout' onClick={ logoutClick } />
                     </div>
                 </div>

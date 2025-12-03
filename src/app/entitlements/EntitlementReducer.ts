@@ -1,12 +1,15 @@
-import Entitlements from "./Entitlements"
+import { AnyAction } from "@reduxjs/toolkit"
 import { Action } from "../redux/Action"
+import DefaultState from "../redux/DefaultState"
 import Entitlement from "./Entitlement"
 
-const initialState: Entitlements = {
+type State = DefaultState<Entitlement[]>
+
+const initialState: State = {
     state: undefined
 }
 
-const entitlements = (state: Entitlements = initialState, action: Action): Entitlements => {
+const entitlements = (state: State = initialState, action: Action): State => {
     switch(action.type) {
         case 'update-entitlements':
             return {

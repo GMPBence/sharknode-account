@@ -22,29 +22,29 @@ const LoginPage = () => {
     return (
         <AuthPopIn key="step0">
             <AuthBox 
-                title="BEJELENTKEZES"
+                title="BEJELENTKEZÉS"
                 inputs={[
                     {
                         type: 'text',
-                        placeholder: 'felhasznalonev',
+                        placeholder: 'felhasználónév',
                         onChange: setUsername
                     },
                     {
-                        type: 'text',
-                        placeholder: 'jelszo',
+                        type: 'password',
+                        placeholder: 'jelszó',
                         onChange: setPassword
                     }
                 ]}
-                button="bejelentkezes"
+                button="bejelentkezés"
                 onDone={ doLogin }
                 links={[
                     {
                         url: '/register',
-                        name: 'regisztracio'
+                        name: 'regisztráció'
                     },
                     {
                         url: '/recover',
-                        name: 'elfelejtett jelszo'
+                        name: 'elfelejtett jelszó'
                     }
                 ]}
             />

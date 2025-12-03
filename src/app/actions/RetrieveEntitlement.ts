@@ -9,19 +9,23 @@ type ReduxAction = DefaultAction<'update-entitlements', Entitlement[]>
 class RetrieveEntitlement extends AbstractAction<any, ReduxAction> {
 
     public async execute(): Promise<ReduxAction> {
-        /*return await new RequestFactory()
+        
+        return await new RequestFactory()
             .url(PanelAPI.GET_ENTITLEMENTS)
             .method(RequestMethod.GET)
             .authorized()
             .retrieve()
                 .then(response => {
                     const data = response.toMono<EntitlementsResponse>()
+
+                    // todo do this in backend
+                    data.body.services[0].expiresAt = Math.round(data.body.services[0].expiresAt / 1000)
                     
                     return {
                         type: 'update-entitlements',
                         payload: data.body.services
                     }
-                })*/
+                })
 
         return {
             type: 'update-entitlements',
@@ -37,7 +41,7 @@ class RetrieveEntitlement extends AbstractAction<any, ReduxAction> {
                 disk: '12'
             },
             expired: false,
-            expiresAt: Util.timestamp() + 5,
+            expiresAt: Util.timestamp() + 60 * 60 * 6,
             price: 0,
             autoRenew: true,
             subdomain: 'skibidisigma'

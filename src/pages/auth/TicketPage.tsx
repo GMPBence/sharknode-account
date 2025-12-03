@@ -48,20 +48,20 @@ const TicketPage = () => {
     return (
         <AuthSlideIn key='step0'>
             <AuthBox 
-                title="EMAIL KOID"
+                title="EMAIL ELLENŐRZÉS"
                 inputs={[
                     {
                         type: 'text',
-                        placeholder: 'kod',
+                        placeholder: '6 jegyű kód',
                         onChange: setCode
                     }
                 ]}
-                button="tovabb"
+                button="tovább"
                 onDone={ onClick }
                 links={[
                     {
                         url: '/register',
-                        name: 'megse'
+                        name: 'mégse'
                     }
                 ]}
             />
@@ -72,20 +72,20 @@ const TicketPage = () => {
     return (
         <AuthSlideIn key='step0'>
             <AuthBox 
-                title="2FA KOD"
+                title="2FA KÓD"
                 inputs={[
                     {
                         type: 'text',
-                        placeholder: 'kod',
+                        placeholder: '2fa kód',
                         onChange: setCode
                     }
                 ]}
-                button="tovabb"
+                button="tovább"
                 onDone={ onClick }
                 links={[
                     {
                         url: '/register',
-                        name: 'megse'
+                        name: 'mégse'
                     }
                 ]}
             />

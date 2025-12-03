@@ -16,7 +16,7 @@ class ActionSet {
         return this
     }
 
-    public async fireActionN(name: string, data?: string) {
+    public async fireActionN(name: string, data?: any) {
         const action = this.actionsByName.get(name)
         return await action().execute(data)
     }

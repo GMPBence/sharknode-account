@@ -51,20 +51,20 @@ const RecoverPasswordPage = () => {
     return (
         <AuthSlideIn key='step0'>
             <AuthBox 
-                title="ELFELEJTETT JELSZO"
+                title="ELFELEJTETT JELSZÓ"
                 inputs={[
                     {
                         type: 'password',
-                        placeholder: 'jelszo',
+                        placeholder: 'jelszó',
                         onChange: setPassword
                     },
                     {
                         type: 'password',
-                        placeholder: 'jelszo ujra',
+                        placeholder: 'jelszó újra',
                         onChange: setPassword1
                     }
                 ]}
-                button="mentes"
+                button="mentés"
                 onDone={ onClick }
                 links={[ ]}
             />

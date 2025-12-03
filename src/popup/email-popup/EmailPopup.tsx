@@ -1,5 +1,6 @@
 import { ChangeEmailFlow, useAuth } from "magicauth-client"
 import Button from "../../components/button/Button"
+import { TailSpin } from "react-loader-spinner"
 
 const EmailPopup = () => {
     const magic = useAuth()
@@ -9,6 +10,23 @@ const EmailPopup = () => {
         flow.email()
     }
 
+    if(magic.isLoading) {
+        return (
+            <div className='col-12'>
+                <div className="row">
+                    <div className="col-12">
+                        <h3>EMAIL VÁLTOZTATÁS</h3>
+                    </div>
+                </div>
+                <div className="align-items-center">
+                    <TailSpin 
+                        width="45"
+                        color="white"
+                    />
+                </div>
+            </div>
+        )
+    }
     return (
         <div className='col-12'>
             <div className="row">

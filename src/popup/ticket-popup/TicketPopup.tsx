@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
 import { CodeFlow, useAuth } from 'magicauth-client'
+import { TailSpin } from 'react-loader-spinner'
 
 type TicketPopupProps = {
 
@@ -10,12 +11,26 @@ type TicketPopupProps = {
 }
 
 const TicketPopup = (props: TicketPopupProps) => {
-    const flowHolder = useAuth().flows()
+    const magic = useAuth()
+    const flowHolder = magic.flows()
     const [ code, setCode ] = useState('')
 
     const onClick = () => {
         const flow = flowHolder.getGenericFlow() as CodeFlow        
         flow.code({ code })
+    }
+
+    if(magic.isLoading) {
+        return (
+            <div className='col-12'>
+                <div className="align-items-center">
+                    <TailSpin 
+                        width="45"
+                        color="white"
+                    />
+                </div>
+            </div>
+        )
     }
 
     if(props.type === 'email')

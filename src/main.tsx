@@ -20,6 +20,7 @@ import ChangeEmailPopup from './popup/change-email-popup/ChangeEmailPopup.tsx'
 import { Provider } from 'react-redux'
 import store from './app/redux/Store.ts'
 import SharkServices from './app/services/SharkServices.ts'
+import Toaster from './app/util/Toaster.ts'
 
 const hashHistory = createHashHistory()
 
@@ -37,6 +38,7 @@ createRoot(document.getElementById('root')!).render(
                                 assign('/')
                             })
                             .page('ticket', (data) => {
+                                console.log(data)
                                 if(data.auth) {
                                     window.openPopup(<TicketPopup type={ data.type } />)
                                     return
@@ -65,6 +67,9 @@ createRoot(document.getElementById('root')!).render(
                             .addEvent('init', async () => {
                                 await AccountSelector.selectAuto()
                                 MagicAuth.handle().loading(false)
+                            })
+                            .addEvent('errordisplay', (error) => {
+                                Toaster.toastError(error)
                             })
                     }  
                     userServices={ new SharkServices() }

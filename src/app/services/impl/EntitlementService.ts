@@ -4,8 +4,8 @@ import store from "../../redux/Store";
 import Toaster from "../../util/Toaster";
 import Util from "../../util/Util";
 import ReduxService from "../ReduxService";
-import ActionSet from "../ActionSet";
-import ActionEvent from "../ActionEvent";
+import ActionSet from "../action/ActionSet";
+import ActionEvent from "../action/ActionEvent";
 import UpdateEntitlement from "../../actions/UpdateEntitlement";
 import RetrieveEntitlement from "../../actions/RetrieveEntitlement";
 import DeleteEntitlement from "../../actions/DeleteEntitlement";
@@ -58,7 +58,7 @@ class EntitlementService extends ReduxService<Entitlement[]> {
                 ent.id, 
                 setTimeout(() => 
                     this.checkExpired(ent.id), 
-                expiresIn * 1000 + 1000)
+                expiresIn * 1000)
             )
         })
     }
@@ -89,7 +89,7 @@ class EntitlementService extends ReduxService<Entitlement[]> {
                 const entitlement = Util.copy(ent)
 
                 entitlement.expired = false
-                entitlement.expiresAt = Util.timestamp() + 10
+                entitlement.expiresAt = Util.timestamp() + 60 * 60 * 6
 
                 this.dispatch(
                     'update-entitlement', 

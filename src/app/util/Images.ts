@@ -30,7 +30,7 @@ class Images extends SimpleCodec<any> {
         this.add('minecraft-folia', folia)
 
         this.add('minecraft-velocity', velocity)
-        this.add('minecraft-bungee', bungee)
+        this.add('minecraft-bungeecord', bungee)
     }
 
 }

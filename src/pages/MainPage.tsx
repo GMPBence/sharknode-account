@@ -1,5 +1,6 @@
 import { useAuth } from "magicauth-client"
 import Welcome from "../components/welcome/Welcome"
+import Select from "../components/select/Select"
 
 const MainPage = () => {
     const magic = useAuth()

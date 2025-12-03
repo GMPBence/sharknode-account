@@ -44,13 +44,16 @@ const ServerTitle = (props: ServerTitleProps) => {
 
     const getFormatted = () => {
         const expiresIn = getCurrent()
-        const minutes = Math.floor(expiresIn / 60)
+
+        const hours = Math.floor(expiresIn / (60 * 60))
+        const minutes = Math.floor(expiresIn % (60 * 60) / 60)
         const seconds = expiresIn % 60
 
+        const hoursFormat = String(hours).padStart(2, '0')
         const minutesFormat = String(minutes).padStart(2, '0')
         const secondsFormat = String(seconds).padStart(2, '0')
 
-        return minutesFormat + ':' + secondsFormat
+        return hoursFormat + ':' + minutesFormat + ':' + secondsFormat
     }
 
     const getCurrent = () => {

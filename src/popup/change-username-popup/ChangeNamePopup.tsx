@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
 import { useAuth, ChangeNameFlow } from 'magicauth-client'
+import { TailSpin } from 'react-loader-spinner'
 
 const ChangeNamePopup = () => {
     const magic = useAuth()
@@ -13,6 +14,23 @@ const ChangeNamePopup = () => {
     }
     const back = () => magic.flows().endFlow()
 
+    if(magic.isLoading) {
+        return (
+            <div className='col-12'>
+                <div className="row">
+                    <div className="col-12">
+                        <h3>NÉVVÁLTOZTATÁS</h3>
+                    </div>
+                </div>
+                <div className="align-items-center">
+                    <TailSpin 
+                        width="45"
+                        color="white"
+                    />
+                </div>
+            </div>
+        )
+    }
     return (
         <div className='col-12'>
             <div className="row">

@@ -11,7 +11,7 @@ type ReduxAction = DefaultAction<'update-entitlement', Entitlement>
 class UpdateEntitlement extends AbstractAction<Entitlement, ReduxAction> {
 
     public async execute(ent: Entitlement): Promise<ReduxAction> {
-        /*return await new RequestFactory()
+        return await new RequestFactory()
             .url(PanelAPI.UPDATE_ENTITLEMENT)
             .method(RequestMethod.POST)
             .body<UpdateEntRequest>({
@@ -32,7 +32,7 @@ class UpdateEntitlement extends AbstractAction<Entitlement, ReduxAction> {
                         type: 'update-entitlement',
                         payload: Util.copy(ent)
                     }
-                })*/
+                })
 
         return {
                         type: 'update-entitlement',

@@ -26,12 +26,10 @@ const RecoverAccountPage = () => {
         flow.email({ email })
     }
 
-    const back = () => magic.flows().endFlow()
-
     return (
         <AuthPopIn key='step0'>
             <AuthBox 
-                title="ELFELEJTETT JELSZO"
+                title="ELFELEJTETT JELSZÓ"
                 inputs={[
                     {
                         type: 'email',
@@ -39,16 +37,16 @@ const RecoverAccountPage = () => {
                         onChange: setEmail
                     }
                 ]}
-                button="kuldes"
+                button="küldés"
                 onDone={ onClick }
                 links={[
                     {
                         url: '/',
-                        name: 'bejelentkezes'
+                        name: 'bejelentkezés'
                     },
                     {
                         url: '/register',
-                        name: 'regisztracio'
+                        name: 'regisztráció'
                     }
                 ]}
             />

@@ -1,5 +1,3 @@
-import ExpiringServer from "../components/expiring-server/ExpiringServer"
-
 import nameImg from '../assets/img/name.png'
 import reload from '../assets/img/reload.png'
 import domain from '../assets/img/domain.png'

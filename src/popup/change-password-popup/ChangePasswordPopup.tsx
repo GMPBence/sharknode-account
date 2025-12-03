@@ -3,6 +3,7 @@ import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
 import { useAuth, ChangePasswordFlow } from 'magicauth-client'
 import Toaster from '../../app/util/Toaster'
+import { TailSpin } from 'react-loader-spinner'
 
 const ChangePasswordPopup = () => {
     const magic = useAuth()
@@ -23,6 +24,24 @@ const ChangePasswordPopup = () => {
         flow.changePassword(password)
     }
 
+    if(magic.isLoading) {
+        return (
+            <div className='col-12'>
+                <div className="row">
+                    <div className="col-12">
+                        <h3>JELSZÓ VÁLTOZTATÁS</h3>
+                    </div>
+                </div>
+                <div className="align-items-center">
+                    <TailSpin 
+                        width="45"
+                        color="white"
+                    />
+                </div>
+            </div>
+        )
+    }
+    
     return (
         <div className='col-12'>
             <div className="row">

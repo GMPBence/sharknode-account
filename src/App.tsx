@@ -12,21 +12,13 @@ import SettingsPage from "./pages/SettingsPage"
 import ManagePage from "./pages/ManagePage"
 import MainPage from "./pages/MainPage"
 import { useAuth } from 'magicauth-client'
-import { useEffect } from "react"
 import TicketPage from "./pages/auth/TicketPage"
-import Toaster from "./app/util/Toaster"
 import RecoverPasswordPage from "./pages/auth/RecoverPasswordPage"
 import CaptchaPage from "./pages/auth/CaptchaPage"
+import PlansPage from "./pages/PlansPage"
 
 const App = () => {
     const auth = useAuth()
-
-    useEffect(() => {
-        if(auth.error) {
-            const error = auth.error
-            Toaster.toastError(error)
-        }
-    }, [ auth ])
 
     if(!auth.isAuthenticated)
     return (
@@ -49,6 +41,7 @@ const App = () => {
                 <Route path="/" element={ <MainPage /> } />
                 <Route path="/yourservices" element={ <YourServicesPage /> } />
                 <Route path="/services" element={ <ServicesPage /> } />
+                <Route path="/services/plans" element={ <PlansPage /> } />
                 <Route path="/settings" element={ <SettingsPage /> } />
                 <Route path="/manage" element={ <ManagePage /> } />
             </Route>

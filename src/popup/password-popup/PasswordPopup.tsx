@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
 import { PasswordFlow, useAuth } from 'magicauth-client'
+import { TailSpin } from 'react-loader-spinner'
 
 const PasswordPopup = () => {
     const magic = useAuth()
@@ -22,6 +23,23 @@ const PasswordPopup = () => {
         })
     }
 
+    if(magic.isLoading) {
+        return (
+            <div className='col-12'>
+                <div className="row">
+                    <div className="col-12">
+                        <h3>JELSZÓ ELLENŐRZÉS</h3>
+                    </div>
+                </div>
+                <div className="align-items-center">
+                    <TailSpin 
+                        width="45"
+                        color="white"
+                    />
+                </div>
+            </div>
+        )
+    }
     return (
         <div className='col-12'>
             <div className="row">
