@@ -6,10 +6,10 @@ import Util from "../../util/Util";
 import ReduxService from "../ReduxService";
 import ActionSet from "../ActionSet";
 import ActionEvent from "../ActionEvent";
-import UpdateEntitlement from "../../actions/impl/UpdateEntitlement";
-import RetrieveEntitlement from "../../actions/impl/RetrieveEntitlement";
-import DeleteEntitlement from "../../actions/impl/DeleteEntitlement";
-import RenewEntitlement from "../../actions/impl/RenewEntitlement";
+import UpdateEntitlement from "../../actions/UpdateEntitlement";
+import RetrieveEntitlement from "../../actions/RetrieveEntitlement";
+import DeleteEntitlement from "../../actions/DeleteEntitlement";
+import RenewEntitlement from "../../actions/RenewEntitlement";
 
 class EntitlementService extends ReduxService<Entitlement[]> {
 
@@ -58,18 +58,18 @@ class EntitlementService extends ReduxService<Entitlement[]> {
                 ent.id, 
                 setTimeout(() => 
                     this.checkExpired(ent.id), 
-                expiresIn * 1000)
+                expiresIn * 1000 + 1000)
             )
         })
     }
 
-    public update(ent: Entitlement) {
-        this.callAction('update-entitlement', ent)
+    public async update(ent: Entitlement) {
+        await this.callAction('update-entitlement', ent)
         console.log(ent)
     }
 
-    public delete(id: string) {
-        this.callAction('delete-entitlement', id)
+    public async delete(id: string) {
+        await this.callAction('delete-entitlement', id)
     }
 
     public async renew(ent: Entitlement) {

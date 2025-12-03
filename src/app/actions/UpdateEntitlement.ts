@@ -1,10 +1,10 @@
 import { AbstractAction, RequestFactory, RequestMethod } from "magicauth-client";
-import DefaultAction from "../../redux/DefaultAction";
-import Entitlement from "../../entitlements/Entitlement";
-import PanelAPI from "../../http/PanelAPI";
-import UpdateEntRequest from "../../datatransfer/request/UpdateEntRequest";
-import SuccessResponse from "../../datatransfer/response/SuccessResponse";
-import Util from "../../util/Util";
+import DefaultAction from "../redux/DefaultAction";
+import Entitlement from "../entitlements/Entitlement";
+import PanelAPI from "../http/PanelAPI";
+import UpdateEntRequest from "../datatransfer/request/UpdateEntRequest";
+import SuccessResponse from "../datatransfer/response/SuccessResponse";
+import Util from "../util/Util";
 
 type ReduxAction = DefaultAction<'update-entitlement', Entitlement>
 

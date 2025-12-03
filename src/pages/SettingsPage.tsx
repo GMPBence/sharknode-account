@@ -46,7 +46,7 @@ const SettingsPage = () => {
                         description={ magic.user.email }
                         image={ <img src={ email } alt="goofyahh" /> }
                         button={{
-                            text: 'Modositas',
+                            text: 'Módosítás',
                             onClick: changeEmail
                         }}
                     />
@@ -55,20 +55,20 @@ const SettingsPage = () => {
             <div className="row">
                 <div className="col-6 col-sm-12 mb">
                     <SettingsBox 
-                        title='Jelszo'
+                        title='Jelszó'
                         image={ <img src={ lock } alt="goofyahh" /> }
                         button={{
-                            text: 'Modositas',
+                            text: 'Módosítás',
                             onClick: changePassword
                         }}
                     />
                 </div>
                  <div className="col-6 col-sm-12 mb">
                     <SettingsBox 
-                        title='Nev'
+                        title='Név'
                         image={ <img src={ user } alt="goofyahh" /> }
                         button={{
-                            text: 'Modositas',
+                            text: 'Módosítás',
                             onClick: changeUsername
                         }}
                     />
@@ -87,10 +87,10 @@ const SettingsPage = () => {
                 </div>
                  <div className="col-6 col-sm-12">
                     <SettingsBox 
-                        title='Fiok torlese'
+                        title='Fiok törlése'
                         image={ <img src={ goofyahh } alt="goofyahh" /> }
                         button={{
-                            text: 'Torles'
+                            text: 'Törlés'
                         }}
                     />
                 </div>

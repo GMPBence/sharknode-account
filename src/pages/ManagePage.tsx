@@ -17,13 +17,14 @@ import ServerPropsPopup from "../popup/server-name-popup/ServerPropsPopup"
 import DeleteServerPopup from "../popup/delete-server-popup/DeleteServerPopup"
 import ServerTitle from "../components/server-title/ServerTitle"
 import { TailSpin } from "react-loader-spinner"
+import RenewPopup from "../popup/renew-popup/RenewPopup"
 
 const ManagePage = () => {
     const navigate = useNavigate()
     const magic = useAuth()
     const location = useLocation()
 
-    const [ render, setRender ] = useState(false)
+    const [ loading, setLoading ] = useState(false)
 
     const searchParams = new URLSearchParams(location.search)
     const searchId = searchParams.get('entitlement_id')
@@ -84,21 +85,26 @@ const ManagePage = () => {
         )
     }
 
-    const updateSettings = () => {
+    const updateSettings = async () => {
         const ent: Entitlement = Util.copy(entitlement)
 
         ent.name = name
         ent.autoRenew = autoRenew
         ent.subdomain = subdomain
 
-        service.update(ent)
+        setLoading(true)
+        await service.update(ent)
+        setLoading(false)
     }
     
     const deleteServer = () => {
         window.openPopup(
             <DeleteServerPopup 
-                onClick={() => {
-                    service.delete(entitlement.id)
+                onClick={ async () => {
+                    setLoading(true)
+                    await service.delete(entitlement.id)
+                    setLoading(false)
+
                     navigate('/yourservices')
                 }}
             />
@@ -106,9 +112,25 @@ const ManagePage = () => {
     }
 
     const renewServer = () => {
-        service.renew(entitlement)
+        window.openPopup(
+            <RenewPopup 
+                name={ entitlement.name }
+                price={ entitlement.price }
+                renew={ () => service.renew(entitlement) }
+            />
+        )
     }
 
+    if(loading) {
+        return (
+            <div className='align-items-center'>
+                <TailSpin
+                    width="45"
+                    color="white"
+                />
+            </div>
+        )
+    }
     if(!entitlement) {
         return (
             <div className='align-items-center'>
@@ -117,7 +139,6 @@ const ManagePage = () => {
             </div>
         )
     }
-
     return (
         <div className='col-12'>
             <div className="row">
@@ -137,14 +158,14 @@ const ManagePage = () => {
                         description={ name }
                         image={ <img src={ nameImg } alt="goofyahh" /> }
                         button={{
-                            text: 'Modositas',
+                            text: 'Módosítás',
                             onClick: updateName
                         }}
                     />
                 </div>
                  <div className="col-6 col-sm-12 mb">
                     <SettingsBox 
-                        description='Automatikus megujitas'
+                        description='Automatikus hosszabbítás'
                         image={ <img src={ reload } alt="goofyahh" /> }
                         button={{
                             text: autoRenew ? 'Bekapcsolva' : 'Kikapcsolva',
@@ -161,7 +182,7 @@ const ManagePage = () => {
                         description={ subdomain + '.sharknode.hu' }
                         image={ <img src={ domain } alt="goofyahh" /> }
                         button={{
-                            text: 'Modositas',
+                            text: 'Módosítás',
                             onClick: updateSubdomain
                         }}
                     />
@@ -170,7 +191,7 @@ const ManagePage = () => {
             <div className="align-items-center">
                 <div className="row row-gap">
                     <Button 
-                        text="Mentes"
+                        text="Mentés"
                         type="secondary"
                         onClick={ updateSettings }
                     />
@@ -184,7 +205,7 @@ const ManagePage = () => {
                         : null
                     }
                     <Button 
-                        text="Torles"
+                        text="Törlés"
                         type="red"
                         onClick={ deleteServer }
                     />

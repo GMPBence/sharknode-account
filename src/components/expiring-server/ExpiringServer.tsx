@@ -16,23 +16,15 @@ type ExpiringServerProps = {
 
 const ExpiringServer = (props: ExpiringServerProps) => {
     const divRef = useRef<HTMLDivElement>(null)
-    const initialized = useRef(false)
 
     const [ time, setTime ] = useState('')
     const [ intId, setIntId ] = useState<any>()
-    const [ expiresAt, setExpiresAt ] = useState(0)
 
     useEffect(() => {
         if(props.date - Util.timestamp() < 0) {
             return
         }
-        if(expiresAt === props.date || initialized.current) {
-            initialized.current = false // kill reacts fuckass logic
-            return
-        }
-        initialized.current = true
-        setExpiresAt(props.date)
-
+   
         if(intId) {
             window.clearInterval(intId)
         }
@@ -45,14 +37,17 @@ const ExpiringServer = (props: ExpiringServerProps) => {
             if(getCurrent() <= 1) {
                 counter++;
 
-                if(counter > 7)
-                divRef.current.classList.add('expiring-server-out')
+                if(counter > 7) {
+                    if(divRef.current) {
+                        divRef.current.classList.add('expiring-server-out')
+                    }
+                }
             }
 
             if(getCurrent() <= 0) {
-                setTime('00:00')
-                setExpiresAt(0)
+                console.log('CLEAR INT')
                 window.clearInterval(interval)
+                setTime('00:00')
                 return
             }
         }, 100);
@@ -84,17 +79,17 @@ const ExpiringServer = (props: ExpiringServerProps) => {
                 <IconText 
                     icon={ <p>!</p> }
                     title={ props.name }
-                    description='HAMAROSAN LEJAR'
+                    description='HAMAROSAN LEJÁR'
                     color='red'
                 />
             </div>
             <div className="expiring-server_right">
-                <h5>{ time } mulva lejar</h5>
+                <h5>{ time } múlva lejár</h5>
                 <h5>{ props.price } SC</h5>
                 {
                     props.onClick ?
                         <Button 
-                            text={ props.autoRenew ? 'Automatikus' : 'Megujitas' } 
+                            text={ props.autoRenew ? 'Automatikus' : 'Hosszabbítás' } 
                             disabled={ props.autoRenew } 
                             type='secondary' 
                             onClick={ props.onClick } 

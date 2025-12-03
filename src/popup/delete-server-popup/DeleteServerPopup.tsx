@@ -16,8 +16,12 @@ const DeleteServerPopup = (props: DeleteProps) => {
     return (
         <div className='col-12'>
             <div className="row">
-                <div className="col-12">
-                    <h3>SZerewrwer</h3>
+                <div className="col-12 mb-sm">
+                    <h3>SZERVER TÖRLÉSE</h3>
+                    <p>
+                        Biztosan törölni szeretnéd ezt a szervert? <br />
+                        Ez a művelet visszafordíthatatlan és a szerver összes adata örökké elvész.
+                    </p>
                 </div>
             </div>
             <div className="align-items-center">

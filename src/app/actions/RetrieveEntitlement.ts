@@ -1,8 +1,8 @@
 import { AbstractAction, RequestFactory, RequestMethod, Util } from "magicauth-client";
-import DefaultAction from "../../redux/DefaultAction";
-import Entitlement from "../../entitlements/Entitlement";
-import PanelAPI from "../../http/PanelAPI";
-import EntitlementsResponse from "../../datatransfer/response/EntitlementsResponse";
+import DefaultAction from "../redux/DefaultAction";
+import Entitlement from "../entitlements/Entitlement";
+import PanelAPI from "../http/PanelAPI";
+import EntitlementsResponse from "../datatransfer/response/EntitlementsResponse";
 
 type ReduxAction = DefaultAction<'update-entitlements', Entitlement[]>
 
@@ -37,7 +37,7 @@ class RetrieveEntitlement extends AbstractAction<any, ReduxAction> {
                 disk: '12'
             },
             expired: false,
-            expiresAt: Util.timestamp() + 15,
+            expiresAt: Util.timestamp() + 5,
             price: 0,
             autoRenew: true,
             subdomain: 'skibidisigma'

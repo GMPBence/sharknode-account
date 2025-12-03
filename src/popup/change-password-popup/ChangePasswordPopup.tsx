@@ -11,11 +11,11 @@ const ChangePasswordPopup = () => {
 
     const onClick = () => {
         if(password.length === 0) {
-            Toaster.toastError('Adj meg egy jelszot')
+            Toaster.toastError('Adj meg egy jelszót.')
             return
         }
         if(password !== passwordAgain) {
-            Toaster.toastError('A jelszo nem egyezik')
+            Toaster.toastError('A jelszó nem egyezik.')
             return
         }
 
@@ -27,21 +27,21 @@ const ChangePasswordPopup = () => {
         <div className='col-12'>
             <div className="row">
                 <div className="col-12">
-                    <h3>JELSZO VALTOZTATAS</h3>
+                    <h3>JELSZÓ VÁLTOZTATÁS</h3>
                 </div>
             </div>
             <div className="row">
                 <div className="col-12 mb">
                     <Input 
                         type='password'
-                        placeholder='uj jelszo'
+                        placeholder='új jelszó'
                         onChange={ setPassword }
                     />
                 </div>
                 <div className="col-12 mb">
                     <Input 
                         type='password'
-                        placeholder='uj jelszo ujra'
+                        placeholder='új jelszó újra'
                         onChange={ setPasswordAgain }
                     />
                 </div>
@@ -49,7 +49,7 @@ const ChangePasswordPopup = () => {
             <div className="align-items-center">
                 <Button 
                     type='primary'
-                    text='Tovabb'
+                    text='Mentés'
                     onClick={ onClick }
                 />
             </div>

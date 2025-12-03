@@ -36,7 +36,7 @@ const ServerPropsPopup = (props: ServerProps) => {
             <div className="align-items-center">
                 <Button 
                     type='primary'
-                    text='Tovabb'
+                    text='Mentés'
                     onClick={ onClick }
                 />
             </div>

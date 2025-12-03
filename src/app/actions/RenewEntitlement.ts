@@ -1,7 +1,7 @@
 import { AbstractAction } from "magicauth-client";
-import Entitlement from "../../entitlements/Entitlement";
-import DefaultAction from "../../redux/DefaultAction";
-import Util from "../../util/Util";
+import Entitlement from "../entitlements/Entitlement";
+import DefaultAction from "../redux/DefaultAction";
+import Util from "../util/Util";
 
 type ReduxAction = DefaultAction<'update-entitlement', Entitlement>
 

@@ -23,7 +23,6 @@ type ServerBoxProps = {
 }
 
 const ServerBox = (props: ServerBoxProps) => {
-    const navigate = useNavigate()
     const entitlement = props.entitlement
 
     const expired = entitlement.expired
@@ -38,11 +37,10 @@ const ServerBox = (props: ServerBoxProps) => {
     const iconColor = expired ? 'red' : 'green'
 
     const buttonText = expired 
-        ? 'Megujitas: ' + entitlement.price + ' SC' 
-        : 'Kezeles'
+        ? 'Hosszabítás: ' + entitlement.price + ' SC' 
+        : 'Kezelés'
 
     const iconSrc = SharkNode.getImages().get(entitlement.properties.type)
-    console.log(iconSrc)
 
     return (
         <div className='server-box'>
@@ -56,14 +54,14 @@ const ServerBox = (props: ServerBoxProps) => {
                 <p>Csomag: { planName }</p>
                 {
                     !expired ?
-                        <p>Lejarat: { expiresDate }</p>
+                        <p>Lejárat: { expiresDate }</p>
                     : null
                 }
             </div>
             <div className="server-box_row">
                 <div className="server-box_resource">
                     <img src={ cpu } alt="" />
-                    <h6>{ entitlement.properties.cpu } szal</h6>
+                    <h6>{ entitlement.properties.cpu } szál</h6>
                 </div>
                 <div className="server-box_resource">
                     <img src={ hdd } alt="" />

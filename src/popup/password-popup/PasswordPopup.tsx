@@ -26,14 +26,14 @@ const PasswordPopup = () => {
         <div className='col-12'>
             <div className="row">
                 <div className="col-12">
-                    <h3>JELSZO ELLENORZES</h3>
+                    <h3>JELSZÓ ELLENŐRZÉS</h3>
                 </div>
             </div>
             <div className="row">
                 <div className="col-12 mb">
                     <Input 
                         type='password'
-                        placeholder='jelenlegi jelszo'
+                        placeholder='jelenlegi jelszó'
                         onChange={ setPassword }
                     />
                 </div>
@@ -41,7 +41,7 @@ const PasswordPopup = () => {
             <div className="align-items-center">
                 <Button 
                     type='primary'
-                    text='Tovabb'
+                    text='Tovább'
                     onClick={ onClick }
                 />
             </div>

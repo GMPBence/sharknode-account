@@ -17,14 +17,14 @@ const ChangeNamePopup = () => {
         <div className='col-12'>
             <div className="row">
                 <div className="col-12">
-                    <h3>NEVVALTOZTATAS</h3>
+                    <h3>NÉVVÁLTOZTATÁS</h3>
                 </div>
             </div>
             <div className="row">
                 <div className="col-12 mb">
                     <Input 
                         type='text'
-                        placeholder='uj felhasznalonev'
+                        placeholder='új felhasználónév'
                         onChange={ setUsername }
                     />
                 </div>
@@ -32,7 +32,7 @@ const ChangeNamePopup = () => {
             <div className="align-items-center">
                 <Button 
                     type='primary'
-                    text='Tovabb'
+                    text='Mentés'
                     onClick={ onClick }
                 />
             </div>

@@ -23,14 +23,15 @@ const TicketPopup = (props: TicketPopupProps) => {
         <div className='col-12'>
             <div className="row">
                 <div className="col-12">
-                    <h3>EMAIL KOID</h3>
+                    <h3>EMAIL ELLENŐRZÉS</h3>
+                    <p>Kérlek nézd meg az emailedre küldött 6 jegyű kódot.</p>
                 </div>
             </div>
             <div className="row">
                 <div className="col-12 mb">
                     <Input 
                         type='text'
-                        placeholder='kod'
+                        placeholder='6 jegyű kód'
                         onChange={ setCode }
                     />
                 </div>
@@ -38,7 +39,7 @@ const TicketPopup = (props: TicketPopupProps) => {
             <div className="align-items-center">
                 <Button 
                     type='primary'
-                    text='Tovabb'
+                    text='Tovább'
                     onClick={ onClick }
                 />
             </div>
@@ -50,14 +51,15 @@ const TicketPopup = (props: TicketPopupProps) => {
         <div className='col-12'>
             <div className="row">
                 <div className="col-12">
-                    <h3>2FA KOID</h3>
+                    <h3>2FA KÓD</h3>
+                    <p>Kérlek nézd meg a választott alkalmazásban a 6 jegyű kódodat.</p>
                 </div>
             </div>
             <div className="row">
                 <div className="col-12 mb">
                     <Input 
                         type='text'
-                        placeholder='kod'
+                        placeholder='2fa kód'
                         onChange={ setCode }
                     />
                 </div>
@@ -65,7 +67,7 @@ const TicketPopup = (props: TicketPopupProps) => {
             <div className="align-items-center">
                 <Button 
                     type='primary'
-                    text='Tovabb'
+                    text='Tovább'
                     onClick={ onClick }
                 />
             </div>

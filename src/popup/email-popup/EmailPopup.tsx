@@ -13,14 +13,14 @@ const EmailPopup = () => {
         <div className='col-12'>
             <div className="row">
                 <div className="col-12 mb">
-                    <h3>EMAIL VALTOZTATAS</h3>
-                    <p>Eloszor meg kell erositenunk a jelenlegi email cimedet, hogy tudjuk, biztos te vagy az</p>
+                    <h3>EMAIL VÁLTOZTATÁS</h3>
+                    <p>Először meg kell erősítenünk a jelenlegi email címedet, hogy tudjuk, biztos te vagy az.</p>
                 </div>
             </div>
             <div className="align-items-center">
                 <Button 
                     type='primary'
-                    text='Tovabb'
+                    text='Tovább'
                     onClick={ onClick }
                 />
             </div>

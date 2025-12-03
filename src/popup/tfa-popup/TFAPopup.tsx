@@ -38,12 +38,12 @@ const TFAPopup = () => {
         <div className='col-12'>
             <div className="row">
                 <div className="col-6 col-sm-12">
-                    <h3>2FA AKTIVALAS</h3>
-                    <p>Szkenneld be a 2FA kodot egy azonosito alkalmazassal! (pl. Google Authenticator)</p>
+                    <h3>2FA AKTIVÁLÁS</h3>
+                    <p>Szkenneld be a 2FA kódot egy azonosító alkalmazással! (pl. Google Authenticator)</p>
                     <div className="mb"></div>
                     <Button 
                         type='primary'
-                        text='Tovabb'
+                        text='Tovább'
                         onClick={ completeScan }
                     />
                     <span className='tfa_link' onClick={ back }>vissza</span>
@@ -60,14 +60,14 @@ const TFAPopup = () => {
         <div className='col-12'>
             <div className="row">
                 <div className="col-12">
-                    <h3>2FA AKTIVALAS</h3>
+                    <h3>2FA AKTIVÁLÁS</h3>
                 </div>
             </div>
             <div className="row">
                 <div className="col-12 mb">
                     <Input 
                         type='text'
-                        placeholder='6 jegyu kod'
+                        placeholder='6 jegyű kód'
                         onChange={ setCode }
                     />
                 </div>
@@ -75,7 +75,7 @@ const TFAPopup = () => {
             <div className="align-items-center">
                 <Button 
                     type='primary'
-                    text='Aktivalas'
+                    text='Aktiválás'
                     onClick={ onDone }
                 />
                 <p onClick={ backToScan }>vissza</p>

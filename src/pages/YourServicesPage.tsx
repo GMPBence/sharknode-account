@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useAuth } from 'magicauth-client'
 import SharkServices from '../app/services/SharkServices'
 import { TailSpin } from 'react-loader-spinner'
+import RenewPopup from '../popup/renew-popup/RenewPopup'
 
 const YourServicesPage = () => {
     const navigate = useNavigate()
@@ -51,6 +52,16 @@ const YourServicesPage = () => {
         )
     }
 
+    const renewServer = (ent: Entitlement) => {
+        window.openPopup(
+            <RenewPopup 
+                name={ ent.name }
+                price={ ent.price }
+                renew={ () => service.renew(ent) }
+            />
+        )
+    }
+
     if(loading) {
         return (
             <div className='align-items-center'>
@@ -80,7 +91,7 @@ const YourServicesPage = () => {
                                 date={ element.expiresAt }
                                 price={ element.price }
                                 autoRenew={ element.autoRenew }
-                                onClick={ ( ) => { service.renew(element) } }
+                                onClick={ ( ) => { renewServer(element) } }
                             />
                         ))
                     }
@@ -94,7 +105,7 @@ const YourServicesPage = () => {
                                 entitlement={ element }
                                 onClick={() => {
                                     if(element.expired) {
-                                        service.renew(element)
+                                        renewServer(element)
                                         return
                                     }
 

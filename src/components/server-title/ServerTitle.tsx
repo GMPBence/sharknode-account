@@ -16,23 +16,14 @@ type ServerTitleProps = {
 }
 
 const ServerTitle = (props: ServerTitleProps) => {
-    const initialized = useRef(false)
     const [ time, setTime ] = useState('')
-
     const [ intId, setIntId ] = useState<any>()
-    const [ expiresAt, setExpiresAt ] = useState(0)
 
     useEffect(() => {
         if(props.date - Util.timestamp() < 0) {
             return
         }
-        if(expiresAt === props.date || initialized.current) {
-            initialized.current = false // kill reacts fuckass logic
-            return
-        }
-        initialized.current = true
-        setExpiresAt(props.date)
-
+        
         if(intId) {
             window.clearInterval(intId)
         }
@@ -43,7 +34,6 @@ const ServerTitle = (props: ServerTitleProps) => {
 
             if(getCurrent() <= 0) {
                 setTime('00:00')
-                setExpiresAt(0)
                 window.clearInterval(interval)
                 return
             }
@@ -80,7 +70,7 @@ const ServerTitle = (props: ServerTitleProps) => {
                 />
             </div>
             <div className="server-title_right">
-                <h5>{ time } mulva lejar</h5>
+                <h5>{ time } múlva lejár</h5>
                 <h5>{ props.price } SC</h5>
             </div>
         </div>

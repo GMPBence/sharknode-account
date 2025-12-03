@@ -16,14 +16,14 @@ const ChangeEmailPopup = () => {
         <div className='col-12'>
             <div className="row">
                 <div className="col-12">
-                    <h3>EMAIL VALTOZTATAS</h3>
+                    <h3>EMAIL VÁLTOZTATÁS</h3>
                 </div>
             </div>
             <div className="row">
                 <div className="col-12 mb">
                     <Input 
                         type='text'
-                        placeholder='uj email cim'
+                        placeholder='új email cím'
                         onChange={ setEmail }
                     />
                 </div>
@@ -31,7 +31,7 @@ const ChangeEmailPopup = () => {
             <div className="align-items-center">
                 <Button 
                     type='primary'
-                    text='Tovabb'
+                    text='Tovább'
                     onClick={ onClick }
                 />
             </div>

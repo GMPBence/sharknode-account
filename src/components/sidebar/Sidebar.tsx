@@ -23,28 +23,28 @@ const Sidebar = () => {
                 <Link to='/'>
                     <div className="sidebar_link">
                         <img src={ home } alt="" />
-                        <h5>Fooldal</h5>
+                        <h5>Főoldal</h5>
                     </div>
                 </Link>
 
                 <Link to='/services'>
                     <div className="sidebar_link">
                         <img src={ server } alt="" />
-                        <h5>Szolgaltatasok</h5>
+                        <h5>Szolgáltatások</h5>
                     </div>
                 </Link>
 
                 <Link to='/yourservices'>
                     <div className="sidebar_link">
                         <img src={ clipboard } alt="" />
-                        <h5>Szolgaltatasaid</h5>
+                        <h5>Szervereid</h5>
                     </div>
                 </Link>
 
                 <Link to='/settings'>
                     <div className="sidebar_link">
                         <img src={ cog } alt="" />
-                        <h5>Beallitasok</h5>
+                        <h5>Beállítások</h5>
                     </div>
                 </Link>
             </div>
@@ -55,7 +55,7 @@ const Sidebar = () => {
                 </div>
                 <div id='buy' className="sidebar_button sidebar_button-big">
                     <img src={ plus } alt="" />
-                    <h4>COIN FELTOLTES</h4>
+                    <h4>COIN HOZZÁADÁS</h4>
                 </div>
             </div>
         </div>

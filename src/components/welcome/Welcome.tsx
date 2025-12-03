@@ -11,7 +11,7 @@ const Welcome = (props: WelcomeProps) => {
     return (
         <div className='welcome'>
             <div className="welcome_title">
-                <h1>Szep napot,</h1>
+                <h1>Szép napot,</h1>
                 <h3>{ props.username }!</h3>
             </div>
             <div className="welcome_actions">
